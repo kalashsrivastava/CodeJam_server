@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "public"))) // Serve static files
 const server = http.createServer(app)
 const io = new Server(server, {
 	cors: {
-		origin: "*",
+		origin: "*"
 	},
 	maxHttpBufferSize: 1e8,
 	pingTimeout: 60000,
@@ -55,7 +55,10 @@ function getUserBySocketId(socketId: SocketId): User | null {
 	return user
 }
 
+
+
 io.on("connection", (socket) => {
+
 	// Handle user actions
 	socket.on(SocketEvent.JOIN_REQUEST, ({ roomId, username }) => {
 		// Check is username exist in the room
